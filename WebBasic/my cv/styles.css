@@ -1,0 +1,203 @@
+*{
+    margin: 0;padding: 0;
+}
+
+.Container {
+    width: 100%;
+    overflow: hidden;
+    display: flex; 
+}
+
+
+
+
+
+.LeftDiv{
+    flex: 3; 
+    align-items: center;
+    margin-left: 5%;
+    width: 25%;
+    height: 100vh;
+    background-color: rgba(245,245,245,255);
+
+
+}
+
+
+
+
+.CvPicture{
+    /* display: flex;
+    justify-content: center; */
+    margin-top: 10%;
+    margin-left: 25%;
+    align-items: center;
+    width: 50%;
+    height: 30%;
+    border-radius: 150px;
+    border-color: grey;
+    object-fit: contain;
+
+
+}
+
+.CvName{
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin-bottom: 5%;
+    font-weight: 800;
+}
+
+.DOBText {
+    
+    margin-left: 5%;
+    color: #3a3a39;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.NationalityText{
+    margin-left: 5%;
+    color: #3a3a39;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.NationalityParagraph{
+    margin-top: 3%;
+}
+
+.Contact{
+    color: black;
+    margin-top: 10%;
+    margin-left: 5%;
+    font-weight: bolder;
+}
+
+
+.SpanForBold{
+    color: #3a3a39;
+    font-weight: bold;
+}
+
+.Address,.Email,.Linkedin,.Number{
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.Address i{
+
+    margin-right: 10%; 
+}
+
+.Email i, .Linkedin i, .Number i{
+
+    margin-right: 5%; 
+}
+
+
+.Email a,.Linkedin a {
+    color: #551A8B; 
+    text-decoration: none; 
+}
+
+.Email a:hover,.Linkedin{
+    text-decoration: underline; 
+}
+
+
+
+
+
+
+
+
+
+                                            /* RIGHT DIV */
+
+
+.RightDiv{
+    flex: 7; /* Take up 30% of the container */
+    align-items: center;
+    margin-right: 5%;
+    padding-left: 5%;
+    width: 70%;
+    height: 150vh;
+    background-color: white;
+
+
+}
+
+
+.About, .WorkExp, .EducationalBack{
+    margin-top: 2%;
+    color: #3a3a39;
+    font-weight: bolder;
+}
+
+
+.MainVerticleDiv {
+    display: flex;
+}
+
+.LeftVerticleDiv {
+    flex: 0.3;
+    height: 100vh; 
+}
+
+.VerticleLine {
+    border-left: 2px solid #214493;
+    height: 80vh; 
+    margin-right: 10px;
+}
+
+
+
+
+.RightVerticleDiv {
+    flex: 9;
+}
+
+
+.WorkDate1, .WorkDate2, .WorkDate3, .EduDate1Style, .EduDate2Style, .EduDate3Style{
+    margin-top: 2%;
+    margin-bottom: 1%;
+    color: #214493;
+    font-weight: bold;
+}
+
+.EduDate1, .EduDate2, .EduDate3{
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.LocationForEdu{
+    color: #214493;
+}
+
+
+.WorkEx1Style, .WorkEx2Style, .WorkEx3Style, .EduBack1Style, .EduBack2Style, .EduBack3Style{
+    color: #3a3a39;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.Contact, .AboutMe{
+    color: #3a3a39;
+
+}
+
+.WorkExList1 ul, .WorkExList2 ul, .WorkExList3 ul{
+
+    list-style-type: none; 
+    padding: 0; 
+    
+}
+
+.WorkExList1 li, .WorkExList2 li, .WorkExList3 li{
+
+    margin-top: 1%; 
+
+
+}
