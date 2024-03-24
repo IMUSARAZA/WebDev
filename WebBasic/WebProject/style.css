@@ -123,6 +123,15 @@ img {
         width: 100%;
         padding-block: 4.5rem 3.5rem;
         transition: top .4s;
+        
+    }
+
+    .home__button, .home__images{
+        margin-bottom: 5rem;
+    }
+
+    .home__stars{
+        margin-top: 2rem;
     }
 }
 
@@ -313,22 +322,148 @@ img {
 } 
 
 .videoContainer {
+    position: relative;
+    margin-top: 200px;
+    margin-bottom: 100px;
     width: 99vw; 
     height: 450px; 
     overflow: hidden; 
-    
 }
 
 .videoLoop {
+    width: 120%; 
+    height: 100%;
+    border-top: 1px solid grey; 
+    border-bottom: 1px solid grey;
+    object-fit: contain; /* Zoom in the video */
+}
+
+
+
+.textOverlay {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
     width: 100%; 
     height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white; 
+    text-align: center; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+.textOverlay h1 {
+    margin-bottom: 10px; 
+    font-size: 50px; 
+    transition: margin-bottom 0.3s ease;
+}
+
+.textOverlay h6 {
+    transition: margin-bottom 0.3s ease;
+    font-size: 18px; 
+}
+
+.videoContainer:hover .textOverlay h1 {
+    margin-bottom: 40px; /* Adjust margin on hover */
+    transition: margin-bottom 0.5s ease; /* Add transition effect */
+}
+
+.videoContainer:hover .textOverlay h6{
+    margin-bottom: 20px; /* Adjust margin on hover */
+    transition: margin-bottom 0.5s ease; /* Add transition effect */
+}
+
+
+
+/* .videoLoop:hover{
+    border: 2px solid grey; 
+    
+} */
+
+
+
+
+
+
+
+
+
+/*=============== CONTACT US ==============*/
+
+.contact__main {
+    display: flex;
+    flex-direction: row; /* Ensures elements are in a row */
+    justify-content: center; /* Horizontally centers the items */
+    align-items: center;
+    margin-top: 10rem;
+    margin-left: 5rem;
+}
+
+.contact__content{
+    width: 20%;
+    margin-right: 5rem;
+}
+
+.contact__image{
+    width: 30%;
+ 
+}
+
+.contact__mainh1{
+
+    color: var(--title-color);
+}
+
+
+.myTextField{
+    height: 2.5rem;
+    width: 20rem;
+    margin-top: 3rem;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    background-color: black;
+
+    color: var(--text-color);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-bold);
+    letter-spacing: 1px;
+    transition: color .4s;
+
     
 }
 
-.videoLoop:hover{
-    border: 2px solid grey; 
-    
+.myTextField:hover{
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    color: var(--title-color);
 }
+
+
+.contact__button{
+    margin-top: 3rem;
+
+    height: 2.5rem;
+    width: 11rem;
+    color: var(--title-color);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-bold);
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    background-color: grey;
+
+}
+
 
 
 /*=============== SCROLL BAR ===============*/
@@ -345,6 +480,11 @@ img {
 /* For small devices */
 
 @media screen and (max-width: 320px) {
+
+    .home__stars{
+        margin-top: 20px;
+    }
+
     .container{
         margin-inline: 1rem;
     }
@@ -359,22 +499,43 @@ img {
         justify-self: center;
     }
 
+    /*========= CONTACT =========*/
+
+    .contact__image{
+        width: 20%;
+     
+    }
+
+    .contact__content{
+        width: 80%;
+    }
+
     
 }
 
 /* For medium devices */
 
 @media screen and (min-width: 576px) {
+
+    .home__stars{
+        margin-top: 20px;
+    }
     .home__container{
         grid-template-columns: 400px;
         justify-content: center;
     }
+
+    
     
 }
 
 /* For large devices */
 
 @media screen and (min-width: 1023px) {
+
+    .home__stars{
+        margin-top: 20px;
+    }
 
     .nav{
         height: calc(var(--header-height) + 2rem);
