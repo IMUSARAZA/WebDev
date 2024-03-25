@@ -324,7 +324,7 @@ img {
 .videoContainer {
     position: relative;
     margin-top: 200px;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
     width: 99vw; 
     height: 450px; 
     overflow: hidden; 
@@ -333,6 +333,7 @@ img {
 .videoLoop {
     width: 120%; 
     height: 100%;
+    padding-bottom: 0.1rem;
     border-top: 1px solid grey; 
     border-bottom: 1px solid grey;
     object-fit: contain; /* Zoom in the video */
@@ -450,7 +451,7 @@ img {
 
 .contact__button{
     margin-top: 3rem;
-
+    cursor: pointer;
     height: 2.5rem;
     width: 11rem;
     color: var(--title-color);
@@ -461,8 +462,8 @@ img {
     border-left: 1px solid grey;
     border-right: 1px solid grey;
     background-color: grey;
-
 }
+
 
 
 
@@ -525,6 +526,7 @@ img {
         justify-content: center;
     }
 
+    
     
     
 }
