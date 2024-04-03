@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    font-family: Arial;
+    border: border-box; /* So that every borer should be added in the inside of the element rather than outside  */
+}
+
+.header-promo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 35px;
+    background-color: #FFC700;
+}
+
+
+.promo-container{
+
+    align-items: center;
+
+}
+
+
+.promo-link{
+    text-decoration: none;
+
+}
+
+.promo-text{
+    font-size: 12.5px;
+    color: black;
+}
+
+
+
+
+/*           NAV BAR      */
+
+
+.nav-bar{
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    
+
+}
+
+.nav-container{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+
+.button-1{
+    width: 118px;
+    height: 52px;
+
+    font-size: 30px;
+    border: none;
+    border-radius: 0%;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.button-subscribe{
+    width: 118px;
+    height: 30px;
+    margin-top: 0.8rem;
+    margin-right: 1rem;
+    width: 118px;
+    height: 52px;
+    font-size: 16px;
+    color: white;
+    border-radius: 7px;
+    background-color: #2A2A2A;
+}
+
+.button-login{
+    margin-top: 0.8rem;
+    width: 118px;
+    height: 40px;
+
+    font-size: 16px;
+    border: none;
+    border-radius: 0%;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.select-1{
+    border: none;
+    border-radius: 0%;
+    border-color: transparent;
+    font-size: 16px;
+}
+
+.nav-logo{
+    margin-left: 10rem;
+    margin-right: 20rem;
+}
+
+
+.select-1:hover{
+    cursor: pointer;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+}
+
+.divider{
+    height: 37px;
+    border-right: 1px solid black;
+}
+
+.search-logo{
+    display: flex;
+    align-items: center;
+    margin-right: 3rem;
+    font-size: 20px;
+}
+
+
+/*          BODY            */ 
+
+
+.full-body-container{
+    margin-top: 2.5rem;
+}
+
+.left-div{
+    margin-left: 5rem;
+}
+
+.left-image-1{
+
+    width: 300px;
+    height: 53px;
+}
+
+.left-image2{
+    width: 300px;
+}
+
+.left-content{
+background-color: #FFC700;
+width: 300px;
+height: 300px;
+
+}
+
+.left-text1{
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+}
