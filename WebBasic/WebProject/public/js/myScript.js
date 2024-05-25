@@ -36,12 +36,10 @@ navMenu.classList.remove('show-menu')
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
 /*=============== SWIPER WACTHES ===============*/
-
 const swiperWatches = new Swiper('.home__swiper', {
-
     loop: true,
     spaceBetween: 32,
-    grabCurson: true,
+    grabCursor: true,
     effect: 'creative',
     creativeEffect: {
         prev: {
@@ -55,13 +53,11 @@ const swiperWatches = new Swiper('.home__swiper', {
             opacity: 0,
         }
     },
-
     pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
+        el: '.swiper-pagination',
+        clickable: true,
     },
-    
-  })
+});
 
 
 /*=============== GSAP ANIMATION ===============*/
