@@ -390,7 +390,7 @@ img {
 .CartBtn {
     width: 10vw;
     height: 6vh;
-    padding-top: 0.5rem;
+    padding-top: 0.6rem;
     border-radius: 12px;
     border: 1px solid rgb(255, 255, 255);
     background-color: rgb(0, 0, 0);
@@ -480,6 +480,33 @@ img {
     margin-top: 40px;
 }
 
+
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-img {
+    width: 100%;
+    height: auto;
+}
+
+.product-title {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.add-to-cart {
+    margin-top: 10px;
+}
 
 
 
