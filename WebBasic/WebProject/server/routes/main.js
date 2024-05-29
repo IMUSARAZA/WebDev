@@ -16,17 +16,23 @@ router.get('/', async (req, res) => {
         const products = await Product.find()
             .skip((page - 1) * perPage)
             .limit(perPage);
+
+        const featuredProducts = await Product.find({ isFeatured: true });
+
         const locals = {
             title: 'Watches',
             description: 'Welcome to our homepage',
             header: 'Welcome to our homepage',
             message: 'This is a message from the controller',
         };
-        res.render('index', {locals, products, totalPages});
+        res.render('index', { locals, products, featuredProducts, totalPages });
     } catch (err) {
         res.status(500).send(err);
     }
 });
+
+
+
 
 router.get('/contact', (req, res) => {
     res.render('contact');
@@ -42,6 +48,34 @@ router.get('/products', async (req, res) => {
         const products = await Product.find()
 
         res.render('products', { products});
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+// Route to display a single product by ID
+router.get('/products/:id', async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const product = await Product.findById(productId);
+        
+        // Add visited product ID to session
+        req.session.visitedProducts = req.session.visitedProducts || [];
+        req.session.visitedProducts.push(productId);
+
+        res.render('single-product', { product });
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+// Route to display visited products
+router.get('/visited-products', async (req, res) => {
+    try {
+        const visitedProductIds = req.session.visitedProducts || [];
+        const visitedProducts = await Product.find({ _id: { $in: visitedProductIds } });
+        
+        res.render('visited-products', { visitedProducts });
     } catch (err) {
         res.status(500).send(err);
     }

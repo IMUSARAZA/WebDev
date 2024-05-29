@@ -69,7 +69,6 @@ h1, h2 {
 }
 
 
-
 .add-Product-Button{
     align-items: center;
     margin-top: 4vh;
@@ -102,11 +101,22 @@ h1, h2 {
             <input type="url" id="imageURL" name="imageURL" required><br>
             <label for="status">Status:</label>
             <select id="status" name="status" required>
-                <option value="available">SALE</option>
-                <option value="out of stock">NOT ON SALE</option>
-            </select><br>
+                <option value="SALE">SALE</option>
+                <option value="NOT ON SALE">NOT ON SALE</option>
+            </select>
+            <select id="Featured" name="Featured" required>
+                <option value="FEATURED">FEATURED</option>
+                <option value="NOT FEATURED">NOT FEATURED</option>
+            </select>
+            <br>
             <button class="add-Product-Button" type="submit">Add Product</button>
         </form>
+    </div>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <input type="text" id="search-query" placeholder="Search products...">
+        <button id="search-button">Search</button>
     </div>
 
 </div>
@@ -117,10 +127,8 @@ h1, h2 {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(() => {
-            // Load products when the page loads
             loadProducts();
 
-            // Add product form submission
             $('#add-product-form').submit((event) => {
                 event.preventDefault();
                 const formData = $(event.target).serialize();
@@ -134,7 +142,6 @@ h1, h2 {
                     });
             });
 
-            // Delete product
             $('#product-list').on('click', '.delete-btn', function() {
                 const productId = $(this).parent().data('id');
                 $.ajax({
@@ -149,7 +156,6 @@ h1, h2 {
                 });
             });
 
-            // Load products function
             function loadProducts() {
                 $.get('/admin/products')
                     .done((products) => {
@@ -162,7 +168,6 @@ h1, h2 {
                     });
             }
 
-            // Display product function
             function displayProduct(product) {
                 $('#product-list').append(`
                     <div class="product" data-id="${product._id}">
@@ -174,6 +179,25 @@ h1, h2 {
                         <button class="delete-btn">Delete</button>
                     </div>
                 `);
+            }
+
+            // Search functionality
+            $('#search-button').click(() => {
+                const query = $('#search-query').val();
+                searchProducts(query);
+            });
+
+            function searchProducts(query) {
+                $.get(`/admin/products/search?q=${query}`)
+                    .done((products) => {
+                        $('#product-list').empty();
+                        products.forEach(product => {
+                            displayProduct(product);
+                        });
+                    })
+                    .fail((error) => {
+                        console.error(error.responseText);
+                    });
             }
 
             // Clear form function

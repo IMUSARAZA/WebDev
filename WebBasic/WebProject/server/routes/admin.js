@@ -31,6 +31,16 @@ router.post('/products', async (req, res) => {
   }
 });
 
+// Search products
+router.get('/products/search', async (req, res) => {
+  const query = req.query.q;
+  try {
+    const products = await Product.find({ title: { $regex: query, $options: 'i' } });
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 
 // Delete product by ID

@@ -10,7 +10,6 @@ const User = require('./server/models/user');
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({
@@ -25,10 +24,8 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', 'layouts/main');
 
-// Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Add this middleware after session initialization
 app.use((req, res, next) => {
   res.locals.user = req.session.user;
   next();
@@ -62,7 +59,6 @@ app.listen(PORT, () => {
   console.log('Express Server Started at port ' + PORT + '. Access your app at http://localhost:' + PORT);
 });
 
-// Add product to cart (dummy endpoint, replace with actual implementation)
 // Route to handle adding to cart
 app.post('/cart/add/:id', async (req, res) => {
   const productId = req.params.id;

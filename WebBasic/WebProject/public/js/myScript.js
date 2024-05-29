@@ -160,6 +160,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // document.querySelectorAll('.CartBtn').forEach(button => {
+    //     button.addEventListener('click', async (event) => {
+    //         const productId = event.target.getAttribute('data-id');
+    //         try {
+    //             const response = await fetch(`/cart/add/${productId}`, { method: 'POST' });
+    //             if (response.ok) {
+    //                 const product = await response.json();
+    //                 cart.push(product);
+    //                 updateCartCount();
+    //             } else {
+    //                 alert('Failed to add product to cart.');
+    //             }
+    //         } catch (error) {
+    //             console.error('Error:', error);
+    //         }
+    //     });
+    // });
+
+
     cartIcon.addEventListener('click', () => {
         cartModal.style.display = 'flex';
         renderCartItems();

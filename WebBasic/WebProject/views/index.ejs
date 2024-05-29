@@ -2,7 +2,6 @@
 <main class="main">
     <!--==================== HOME ====================-->
     <section class="home">
-
         <div class="home__container container">
             <div class="home__data">
                 <div class="home__content">
@@ -73,32 +72,46 @@
             <img src="/img/homePicture.jpg" alt="image" class="Sale-Picture">
         </div>
 
-        
-
-
-
         <!--==================== PRODUCTS ====================-->
         <section class="products-section">
             <div class="container">
                 <div id="products" class="products-grid">
-                    <% products.forEach(product=> { %>
+                    <% products.forEach(product => { %>
                         <div class="product-card">
+                            <a href="/products/<%= product._id %>">View Product</a>
                             <img src="<%= product.imageURL %>" alt="<%= product.title %>">
-                            <h3>
-                                <%= product.title %>
-                            </h3>
-                            <p>Original Price: $<%= product.originalPrice %>
-                            </p>
-                            <p>Price: $<%= product.price %>
-                            </p>
-                            <p>Status: <%= product.status %>
-                            </p>
+                            <h3><%= product.title %></h3>
+                            <p>Original Price: $<%= product.originalPrice %></p>
+                            <p>Price: $<%= product.price %></p>
+                            <p>Status: <%= product.status %></p>
                             <button class="quick-view" data-title="<%= product.title %>"
-                                data-price="<%= product.price %>" data-image="<%= product.imageURL %>">Quick
-                                View</button>
+                                data-price="<%= product.price %>" data-image="<%= product.imageURL %>">Quick View</button>
                             <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
                         </div>
-                        <% }) %>
+                    <% }) %>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== FEATURED PRODUCTS ====================-->
+        <section class="products-section">
+            <div class="container">
+                <h1>Featured Products</h1>
+                <div id="featured-products" class="products-grid">
+                    <% featuredProducts.forEach(product => { %>
+                        <div class="product-card">
+                            <a href="/products/<%= product._id %>">View Product</a>
+
+                            <img src="<%= product.imageURL %>" alt="<%= product.title %>">
+                            <h3><%= product.title %></h3>
+                            <p>Original Price: $<%= product.originalPrice %></p>
+                            <p>Price: $<%= product.price %></p>
+                            <p>Status: <%= product.status %></p>
+                            <button class="quick-view" data-title="<%= product.title %>"
+                                    data-price="<%= product.price %>" data-image="<%= product.imageURL %>">Quick View</button>
+                            <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+                        </div>
+                    <% }) %>
                 </div>
             </div>
         </section>
@@ -114,17 +127,14 @@
             </div>
         </div>
         <div class="pagination">
-            <% for(let i=1; i <=totalPages; i++) { %>
+            <% for(let i = 1; i <= totalPages; i++) { %>
                 <a href="/?page=<%= i %>" class="pagination-button">
                     <%= i %>
                 </a>
-                <% if (i !==totalPages) { %>
+                <% if (i !== totalPages) { %>
                     <span class="pagination-space">&nbsp;</span>
-                    <% } %>
-                        <% } %>
+                <% } %>
+            <% } %>
         </div>
-
-
-        
     </section>
 </main>
