@@ -1,0 +1,35 @@
+<!--==================== PRODUCTS ====================-->
+
+<section class="products-main-section">
+<section class="products-section">
+    <div class="container">
+        <div id="products" class="products-grid">
+            <% products.forEach(product => { %>
+                <div class="product-card">
+                    <img src="<%= product.imageURL %>" alt="<%= product.title %>">
+                    <h3><%= product.title %></h3>
+                    <p>Original Price: $<%= product.originalPrice %></p>
+                    <p>Price: $<%= product.price %></p>
+                    <p>Status: <%= product.status %></p>
+                    <button class="quick-view" data-title="<%= product.title %>" data-price="<%= product.price %>" data-image="<%= product.imageURL %>">Quick View</button>
+                    <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Quick View Modal -->
+<div id="quickViewModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <img id="modalImage" src="" alt="Product Image">
+        <h1 id="modalTitle"></h1>
+        <p id="modalPrice"></p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+</div>
+
+
+
+</section>

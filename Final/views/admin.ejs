@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.add-Products{
+    margin-top: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.add-product-form {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #262424;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.add-product-form label,
+.add-product-form input,
+.add-product-form select,
+.add-product-form button {
+    width: 50%;
+    margin-bottom: 5px; 
+    padding: 5px; 
+}
+
+.add-product-form input,
+.add-product-form select {
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc; 
+    border-radius: 3px; 
+}
+
+
+#product-list {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.product {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.delete-btn {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+.add-Product-Button{
+    align-items: center;
+    margin-top: 4vh;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    
+    <div class="add-Products">
+    <!-- Add Product Form -->
+    <div class="add-product-form">
+        <h2 style="color: white;">Add New Product</h2>
+        <form id="add-product-form">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required><br>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required><br>
+            <label for="originalPrice">Original Price:</label>
+            <input type="number" id="originalPrice" name="originalPrice" required><br>
+            <label for="imageURL">Image URL:</label>
+            <input type="url" id="imageURL" name="imageURL" required><br>
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="SALE">SALE</option>
+                <option value="NOT ON SALE">NOT ON SALE</option>
+            </select>
+            <select id="Featured" name="Featured" required>
+                <option value="FEATURED">FEATURED</option>
+                <option value="NOT FEATURED">NOT FEATURED</option>
+            </select>
+            <br>
+            <button class="add-Product-Button" type="submit">Add Product</button>
+        </form>
+    </div>
+
+    <!-- Search Form -->
+    <div class="search-form">
+        <input type="text" id="search-query" placeholder="Search products...">
+        <button id="search-button">Search</button>
+    </div>
+
+</div>
+    
+    <!-- Product List -->
+    <div id="product-list"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            loadProducts();
+
+            $('#add-product-form').submit((event) => {
+                event.preventDefault();
+                const formData = $(event.target).serialize();
+                $.post('/admin/products', formData)
+                    .done((product) => {
+                        displayProduct(product);
+                        clearForm();
+                    })
+                    .fail((error) => {
+                        console.error(error.responseText);
+                    });
+            });
+
+            $('#product-list').on('click', '.delete-btn', function() {
+                const productId = $(this).parent().data('id');
+                $.ajax({
+                    url: `/admin/products/${productId}`,
+                    type: 'DELETE',
+                    success: () => {
+                        $(this).parent().remove();
+                    },
+                    error: (error) => {
+                        console.error(error.responseText);
+                    }
+                });
+            });
+
+            function loadProducts() {
+                $.get('/admin/products')
+                    .done((products) => {
+                        products.forEach(product => {
+                            displayProduct(product);
+                        });
+                    })
+                    .fail((error) => {
+                        console.error(error.responseText);
+                    });
+            }
+
+            function displayProduct(product) {
+                $('#product-list').append(`
+                    <div class="product" data-id="${product._id}">
+                        <h3>${product.title}</h3>
+                        <p>Price: ${product.price}</p>
+                        <p>Original Price: ${product.originalPrice}</p>
+                        <p>Status: ${product.status}</p>
+                        <img src="${product.imageURL}" alt="${product.title}" width="100">
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                `);
+            }
+
+            // Search functionality
+            $('#search-button').click(() => {
+                const query = $('#search-query').val();
+                searchProducts(query);
+            });
+
+            function searchProducts(query) {
+                $.get(`/admin/products/search?q=${query}`)
+                    .done((products) => {
+                        $('#product-list').empty();
+                        products.forEach(product => {
+                            displayProduct(product);
+                        });
+                    })
+                    .fail((error) => {
+                        console.error(error.responseText);
+                    });
+            }
+
+            // Clear form function
+            function clearForm() {
+                $('#add-product-form')[0].reset();
+            }
+        });
+    </script>
+</body>
+</html>
