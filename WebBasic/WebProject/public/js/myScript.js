@@ -176,10 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
     
     updateCartCount();
-
 
 
     window.onload = function () {
